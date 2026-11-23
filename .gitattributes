@@ -6,3 +6,8 @@
 *.webp binary
 *.ico binary
 *.pdf binary
+
+# GitHub language statistics: count the dashboard build, not the demo copy
+web/frontend/dashboard/index.js linguist-generated=false
+web/frontend/dashboard/index.css linguist-generated=false
+demo/** linguist-vendored
