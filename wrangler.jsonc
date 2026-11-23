@@ -4,6 +4,8 @@
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "cyber-eye",
   "compatibility_date": "2025-09-01",
+  // Publish on https://cyber-eye.<account>.workers.dev
+  "workers_dev": true,
   "assets": {
     "directory": "./demo",
     "not_found_handling": "404-page"
