@@ -29,6 +29,7 @@ enriched and stored in the Elastic Stack, visualised in Grafana and Kibana, and 
 ## Contents
 
 - [Overview](#overview)
+- [Downloads](#downloads)
 - [Screenshots](#screenshots)
 - [Architecture](#architecture)
 - [Features](#features)
@@ -52,7 +53,33 @@ Cyber Eye bridges the gap between theory and hands-on security practice. It simu
 6. **Alerting** — **Grafana Alerting** rules fire through **Alertmanager**, which delivers branded HTML email notifications.
 7. **Portal** — a web portal (Nginx + React dashboard + Flask API + MySQL) provides authenticated, single-entry access to the whole stack.
 
-This repository contains the monitoring and portal stack (Docker Compose) together with the full network configuration reference.
+This repository contains the monitoring and portal stack (Docker Compose) and the full network configuration reference. The complete lab — network, IPS, honeypot and attack generator — is available as a ready-to-run virtual machine (see [Downloads](#downloads)).
+
+## Downloads
+
+| Resource | Size | Link |
+|---|---|---|
+| **Complete lab virtual machine** (OVA in a RAR archive) | 30.6 GB | [Download from MEGA](https://mega.nz/file/xmcUURpC#yNQdEx5EGvZFruNiqrdvPxRyJvLDVcFidfqLam0Ryns) |
+| **Project documentation** (PDF, 90 pages) | 3 MB | [Latest release](../../releases/latest) |
+| **Presentation** (PowerPoint) | 72 MB | [Latest release](../../releases/latest) |
+| **Demo video** (MP4) | 92 MB | [Latest release](../../releases/latest) |
+
+### What's inside the lab VM
+
+The OVA is the complete Cyber Eye environment, ready to run:
+
+- **PNETLab enterprise network** — the full topology, pre-configured: ISP and attacker routers, edge router R5, core routers R1–R4, Layer 3 switches A and B, access switches 1–4, the attacker and honeypot switches, and the **FortiGate** firewall ([every configuration is documented here](docs/network/device-configurations.md)).
+- **Suricata IPS** — installed and running inline with Emerging Threats Open and custom rules, writing EVE JSON logs.
+- **T-Pot honeypot** — the multi-honeypot platform on the honeypot segment.
+- **Python attack generator** — the attack-emulation scripts on the attacker network (port scans, SYN floods, ICMP floods, suspicious HTTP requests).
+
+### Using the VM
+
+1. Download the archive from MEGA (the MEGA desktop app is recommended for a file this size).
+2. Extract it with [7-Zip](https://www.7-zip.org/) or WinRAR. Make sure the drive has enough free space for both the archive and the extracted OVA.
+3. Import the `.ova` into **VMware Workstation** (*File → Open*) or **VirtualBox** (*File → Import Appliance*).
+4. Give the VM as much RAM and as many CPU cores as your host allows, then start it and open the PNETLab lab.
+5. Run the monitoring stack from this repository ([Getting started](#getting-started)) to receive and visualise the lab's events.
 
 ## Screenshots
 
@@ -219,7 +246,9 @@ cyber-eye/
 ## Documentation
 
 - **Network device configurations** — every router, switch and firewall command with explanations: [`docs/network/device-configurations.md`](docs/network/device-configurations.md)
-- **Project presentation and demo video** — attached to the [latest release](../../releases/latest)
+- **Full project report** (90 pages: network design, Suricata, T-Pot, attack generator, ELK pipeline, Grafana and alerting) — PDF in the [latest release](../../releases/latest)
+- **Presentation and demo video** — attached to the [latest release](../../releases/latest)
+- **Lab virtual machine** — see [Downloads](#downloads)
 
 ## Security notes
 
