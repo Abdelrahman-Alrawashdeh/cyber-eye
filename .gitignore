@@ -1,0 +1,21 @@
+# ── Secrets ─────────────────────────────────────────────
+.env
+.env.*
+!.env.example
+alertmanager/alertmanager.yml
+
+# ── Grafana runtime state (recreated on first start) ────
+grafana-data/*
+!grafana-data/dashboards/
+
+# ── Local notes and helpers ─────────────────────────────
+NOTES.md
+publish-to-github.ps1
+
+# ── OS / editor / Python ────────────────────────────────
+desktop.ini
+Thumbs.db
+.DS_Store
+__pycache__/
+*.py[cod]
+.venv/
