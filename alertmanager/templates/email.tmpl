@@ -1,0 +1,357 @@
+{{ define "email.default.html" -}}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark">
+<title>Cyber Eye Security Alert | {{ if .CommonLabels.alertname }}{{ .CommonLabels.alertname }}{{ else }}Alert{{ end }}</title>
+
+<style>
+  :root{
+    --brand:#020617;
+    --brand-soft:#111827;
+    --ok:#10b981;
+    --warn:#f59e0b;
+    --crit:#ef4444;
+    --bg:#0b1120;
+    --text:#f9fafb;
+    --muted:#9ca3af;
+    --card:#020617;
+    --soft:#020617;
+    --border:#1f2937;
+    --link:#60a5fa;
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root{
+      --brand:#020617;
+      --brand-soft:#111827;
+      --ok:#10b981;
+      --warn:#f59e0b;
+      --crit:#ef4444;
+      --bg:#f8fafc;
+      --text:#111827;
+      --muted:#6b7280;
+      --card:#ffffff;
+      --soft:#f9fafb;
+      --border:#e5e7eb;
+      --link:#2563eb;
+    }
+  }
+
+  a, a span { text-decoration:none !important; }
+  img { border:0; outline:none; text-decoration:none; }
+
+  body{
+    margin:0;
+    padding:20px;
+    background:var(--bg);
+    color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    font-size:14px;
+  }
+
+  .wrap{
+    max-width:760px;
+    margin:auto;
+    background:var(--card);
+    border-radius:14px;
+    box-shadow:0 10px 24px rgba(15,23,42,.5);
+    overflow:hidden;
+    border:1px solid var(--border);
+  }
+
+  .hdr{
+    background:#020617;
+    color:#fff;
+    padding:14px 18px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    border-bottom:3px solid var(--crit);
+  }
+  {{- if eq .Status "resolved" -}}
+  .hdr{ border-bottom:3px solid var(--ok) !important; }
+  {{- end -}}
+
+  .hdr-left{
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+  }
+
+  .hdr-title-main{
+    margin:0;
+    font-size:15px;
+    font-weight:800;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+  }
+
+  .hdr-title-sub{
+    margin:0;
+    font-size:11px;
+    opacity:.9;
+  }
+
+  .status-indicator{
+    width:72px;
+    height:72px;
+    min-width:72px;
+    border-radius:999px;
+    border:2px solid var(--border);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    box-sizing:border-box;
+    padding:6px;
+    padding-top:50px;
+    padding-left:8px;
+    font-size:9px;
+    line-height:1.2;
+    font-weight:800;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+    word-break:break-word;
+  }
+
+  .status-indicator--firing{
+    background:rgba(239,68,68,.12);
+    border-color:#f97373;
+    color:#fee2e2;
+  }
+  .status-indicator--ok{
+    background:rgba(16,185,129,.12);
+    border-color:#34d399;
+    color:#bbf7d0;
+  }
+  .status-indicator--warn{
+    background:rgba(245,158,11,.12);
+    border-color:#fbbf24;
+    color:#fef3c7;
+  }
+  .status-indicator--neutral{
+    background:rgba(148,163,184,.12);
+    border-color:#9ca3af;
+    color:#e5e7eb;
+  }
+
+  .content{
+    padding:16px 18px;
+  }
+
+  .section-title{
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:.12em;
+    color:var(--muted);
+    margin:14px 0 8px;
+  }
+
+  .kv-table{
+    width:100%;
+    border-collapse:collapse;
+    margin:2px 0 8px;
+  }
+  .kv-table td{
+    padding:4px 0;
+    vertical-align:top;
+    font-size:13px;
+  }
+  .kv-table .k{
+    width:150px;
+    color:var(--muted);
+    white-space:nowrap;
+    padding-right:8px;
+    font-weight:700;
+    font-size:13px;
+  }
+  .kv-table .k::after{
+    content: ":";
+    padding-left:6px;
+  }
+  .kv-table .v{
+    font-weight:600;
+    padding-left:4px;
+    word-break:break-word;
+  }
+
+  .box{
+    background:var(--soft);
+    border-radius:10px;
+    padding:10px 12px;
+    margin-top:8px;
+    border:1px solid var(--border);
+    font-size:13px;
+  }
+
+  .box-label{
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.14em;
+    color:var(--muted);
+    margin-bottom:6px;
+  }
+
+  .foot{
+    padding:12px 18px 14px;
+    font-size:11px;
+    color:var(--muted);
+    text-align:center;
+    background:var(--soft);
+    border-top:1px solid var(--border);
+  }
+
+  .chip{
+    display:inline-block;
+    border-radius:999px;
+    padding:3px 10px;
+    font-size:12px;
+    font-weight:700;
+    border:1px solid transparent;
+  }
+  .chip-crit{
+    background:rgba(239,68,68,.12);
+    color:#fecaca;
+    border-color:#f97373;
+  }
+  .chip-warn{
+    background:rgba(245,158,11,.12);
+    color:#fed7aa;
+    border-color:#fbbf24;
+  }
+  .chip-ok{
+    background:rgba(16,185,129,.12);
+    color:#bbf7d0;
+    border-color:#34d399;
+  }
+  .chip-neutral{
+    background:rgba(148,163,184,.12);
+    color:#e5e7eb;
+    border-color:#9ca3af;
+  }
+
+  .en{
+    direction:ltr;
+    text-align:left;
+    color:var(--text);
+    margin-top:2px;
+    font-size:13px;
+  }
+
+  @media (max-width:520px){
+    body{padding:12px;}
+    .hdr{flex-direction:row;align-items:center;}
+    .status-indicator{
+      width:60px;
+      height:60px;
+      min-width:60px;
+      font-size:8px;
+      padding-top:9px;
+      padding-left:4px;
+    }
+    .kv-table .k{ width:120px; font-size:12px; }
+  }
+</style>
+</head>
+
+<body>
+
+  <div style="display:none;max-height:0;overflow:hidden;opacity:0;">
+    Cyber Eye – Network Security Alert • {{ if .CommonLabels.alertname }}{{ .CommonLabels.alertname }}{{ else }}Alert{{ end }} • {{ if .Status }}Status: {{ .Status }}{{ end }}
+  </div>
+
+  {{- $statusClass := "status-indicator--neutral" -}}
+  {{- if eq .Status "firing" -}}
+    {{- $statusClass = "status-indicator--firing" -}}
+  {{- else if eq .Status "resolved" -}}
+    {{- $statusClass = "status-indicator--ok" -}}
+  {{- else if or (eq .Status "warning") (eq .Status "pending") -}}
+    {{- $statusClass = "status-indicator--warn" -}}
+  {{- end -}}
+
+  <div class="wrap">
+    <div class="hdr">
+      <div class="hdr-left">
+        <p class="hdr-title-main">Cyber Eye Alerting System</p>
+      </div>
+      <div class="status-indicator {{ $statusClass }}">
+        {{ .Status | toUpper }}
+      </div>
+    </div>
+
+    <div class="content">
+
+      <div class="section-title">Alert Overview</div>
+      <table role="presentation" class="kv-table">
+        <tr>
+          <td class="k">Alert Name</td>
+          <td class="v">
+            {{ if .CommonLabels.alertname }}{{ .CommonLabels.alertname }}{{ else }}—{{ end }}
+          </td>
+        </tr>
+        <tr>
+          <td class="k">Security Component</td>
+          <td class="v">
+            {{ if .CommonLabels.job }}{{ .CommonLabels.job | title }}{{ else }}Cyber Eye Monitoring{{ end }}
+          </td>
+        </tr>
+        <tr>
+          <td class="k">Severity</td>
+          <td class="v">
+            {{ $sev := .CommonLabels.severity }}
+            {{ if eq $sev "critical" }}<span class="chip chip-crit">Critical (4)</span>
+            {{ else if or (eq $sev "high") (eq $sev "3") }}<span class="chip chip-crit">High (3)</span>
+            {{ else if or (eq $sev "warning") (eq $sev "2") }}<span class="chip chip-warn">Medium (2)</span>
+            {{ else if or (eq $sev "low") (eq $sev "1") }}<span class="chip chip-ok">Low (1)</span>
+            {{ else if $sev }}<span class="chip chip-neutral">{{ $sev }}</span>
+            {{ else }}<span class="chip chip-neutral">Unknown</span>
+            {{ end }}
+          </td>
+        </tr>
+        <tr>
+          <td class="k">First Seen</td>
+          <td class="v">
+            {{ if gt (len .Alerts) 0 }}
+              {{ (index .Alerts 0).StartsAt }}
+            {{ else }}—{{ end }}
+          </td>
+        </tr>
+        <tr>
+          <td class="k">Events Count</td>
+          <td class="v">
+            {{ len .Alerts }} individual event(s)
+          </td>
+        </tr>
+      </table>
+
+      {{ if .CommonAnnotations.summary }}
+      <div class="box">
+        <div class="box-label">Executive Summary</div>
+        <div class="en">{{ .CommonAnnotations.summary }}</div>
+      </div>
+      {{ end }}
+
+      {{ if .CommonAnnotations.description }}
+      <div class="box">
+        <div class="box-label">Technical Description</div>
+        <div class="en">{{ .CommonAnnotations.description }}</div>
+      </div>
+      {{ end }}
+
+    </div>
+
+    <div class="foot">
+      © Cyber Eye Security Operations Center (SOC). Automated Notification.<br/>
+      This email was generated by Alertmanager v0.27.0.
+    </div>
+  </div>
+</body>
+</html>
+{{- end }}

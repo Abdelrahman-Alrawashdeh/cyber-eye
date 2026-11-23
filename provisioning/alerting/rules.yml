@@ -1,0 +1,67 @@
+apiVersion: 1
+groups:
+  - orgId: 1
+    name: Suricata Alerts
+    folder: Security
+    interval: 1m
+    rules:
+      - uid: suri_alerts_rate
+        title: High Suricata Alerts Rate
+        condition: C
+        for: 1m
+
+        
+        noDataState: OK
+        execErrState: OK
+
+        labels:
+          severity: warning
+        annotations:
+          summary: "High Suricata alerts in the last 5 minutes"
+          description: "Alert count > 5 in the last 5 minutes (eve logs)."
+
+        data:
+          - refId: A
+            datasourceUid: es-cybereye
+            relativeTimeRange:
+              from: 300
+              to: 0
+            model:
+              queryType: lucene
+              query: 'event_type:"alert"'
+              timeField: '@timestamp'
+              bucketAggs:
+                - id: "2"
+                  type: date_histogram
+                  field: '@timestamp'
+                  settings:
+                    interval: '1m'
+                    min_doc_count: 0
+              metrics:
+                - id: "1"
+                  type: count
+              intervalMs: 60000
+              maxDataPoints: 300
+
+          - refId: B
+            datasourceUid: __expr__
+            model:
+              type: reduce
+              expression: A
+              reducer: sum
+
+          - refId: C
+            datasourceUid: __expr__
+            model:
+              type: threshold
+              expression: B
+              conditions:
+                - evaluator:
+                    type: gt
+                    params: [5]
+                  operator:
+                    type: and
+                  reducer:
+                    type: last
+                  query:
+                    params: [B]

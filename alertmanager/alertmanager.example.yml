@@ -1,0 +1,29 @@
+# Copy to alertmanager.yml and fill in your SMTP settings. alertmanager.yml is git-ignored.
+
+global:
+  resolve_timeout: 5m
+  smtp_smarthost: 'smtp.gmail.com:587'
+  smtp_from: 'alerts@example.com'
+  smtp_auth_username: 'alerts@example.com'
+  smtp_auth_password: 'your-smtp-app-password'
+  smtp_require_tls: true
+
+templates:
+  - '/etc/alertmanager/templates/*.tmpl'
+
+route:
+  receiver: 'mail-team'
+  group_by: ['alertname', 'job', 'alert_signature']
+  group_wait: 10s
+  group_interval: 2m
+  repeat_interval: 2h
+
+receivers:
+  - name: 'mail-team'
+    email_configs:
+      - to: 'soc-team@example.com'
+        send_resolved: true
+        headers:
+          Subject: '🚨 [{{ .Status | toUpper }}] Cyber Eye Security Alert | {{ .CommonLabels.alertname }} (SEV: {{ .CommonLabels.severity | toUpper }})'
+        html: '{{ template "email.default.html" . }}'
+        text: '{{ .Status }} - Cyber Eye Alert: {{ .CommonLabels.alertname }} ({{ .CommonLabels.job }})'

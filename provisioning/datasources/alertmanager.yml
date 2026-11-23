@@ -1,0 +1,11 @@
+apiVersion: 1
+
+datasources:
+  - name: alertmanager
+    type: alertmanager
+    access: proxy
+    url: http://alertmanager:9093
+    jsonData:
+      implementation: prometheus
+      handleGrafanaManagedAlerts: true
+    editable: true
