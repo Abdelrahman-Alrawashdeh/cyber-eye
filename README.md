@@ -20,6 +20,7 @@ enriched and stored in the Elastic Stack, visualised in Grafana and Kibana, and 
 ![React](https://img.shields.io/badge/Dashboard-React-61DAFB?logo=react&logoColor=black)
 ![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?logo=mysql&logoColor=white)
 
+[![Live demo](https://img.shields.io/badge/Live_demo-cyber--eye.abdstpro.workers.dev-27B4FF?style=for-the-badge&logo=cloudflare&logoColor=white)](https://cyber-eye.abdstpro.workers.dev)
 [![Watch the demo on YouTube](https://img.shields.io/badge/Watch_the_demo-YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtu.be/6JnpEV_RBdA)
 
 <sub>Graduation project · CYS 499 · Department of Information Technology, Yarmouk University · Fall 2025/2026</sub>
@@ -31,6 +32,7 @@ enriched and stored in the Elastic Stack, visualised in Grafana and Kibana, and 
 ## Contents
 
 - [Overview](#overview)
+- [Live demo](#live-demo)
 - [Demo video](#demo-video)
 - [Downloads](#downloads)
 - [Screenshots](#screenshots)
@@ -57,6 +59,10 @@ Cyber Eye bridges the gap between theory and hands-on security practice. It simu
 7. **Portal** — a web portal (Nginx + React dashboard + Flask API + MySQL) provides authenticated, single-entry access to the whole stack.
 
 This repository contains the monitoring and portal stack (Docker Compose) and the full network configuration reference. The complete lab — network, IPS, honeypot and attack generator — is available as a ready-to-run virtual machine (see [Downloads](#downloads)).
+
+## Live demo
+
+**[cyber-eye.abdstpro.workers.dev](https://cyber-eye.abdstpro.workers.dev)** — a public, static version of the portal: sign in with **Explore the live demo**, browse the dashboard and the team page, and open the platform tour with real screenshots of Grafana, Kibana and Alertmanager. Live authentication and real-time data require the full Docker stack ([Getting started](#getting-started)).
 
 ## Demo video
 
@@ -249,6 +255,8 @@ cyber-eye/
 │   ├── frontend/               # login page, React dashboard build, assets
 │   ├── backend/                # Flask API (app.py, Dockerfile, requirements)
 │   └── mysql-init/             # schema, hashing triggers, seed admin
+├── demo/                       # static public demo, live at cyber-eye.abdstpro.workers.dev
+├── wrangler.jsonc              # Cloudflare deployment config for demo/
 └── docs/
     ├── screenshots/
     └── network/                # topology + device configurations
