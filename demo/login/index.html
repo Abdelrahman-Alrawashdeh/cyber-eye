@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Cyber Eye — Sign in</title>
+    <meta name="description" content="CYBER EYE — network monitoring and cyber threat analytics platform. Live traffic monitoring, attack detection and security alerting." />
+    <meta name="theme-color" content="#020617" />
+    <meta property="og:title" content="CYBER EYE Platform" />
+    <meta property="og:description" content="Network monitoring and cyber threat analytics platform." />
+    <meta property="og:type" content="website" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- ✅ favicon من مجلد assets -->
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+
+    <!-- ✅ ستايل صفحة اللوقن من مجلد login -->
+    <link rel="stylesheet" href="/login/index.css" />
+    <link rel="stylesheet" href="/login/demo.css" />
+  </head>
+  <body>
+    <!-- Grid background + glow nodes -->
+    <div class="grid-background"></div>
+    <div class="node node-1"></div>
+    <div class="node node-2"></div>
+    <div class="node node-3"></div>
+
+    <div class="container">
+      <!-- Hero section + big logo -->
+      <section class="hero">
+        <div class="hero-logo-wrapper">
+          <div class="hero-logo">
+            <!-- ✅ الشعار من مجلد assets -->
+            <img src="/assets/logos.svg" alt="CYBER EYE Logo" />
+          </div>
+          <div class="hero-logo-text">
+            <div class="hero-logo-title">
+              <span class="cyber">CYBER</span> <span class="eye">EYE</span>
+            </div>
+            <div class="hero-logo-sub">
+              Network monitoring & cyber threat analytics platform
+            </div>
+          </div>
+        </div>
+
+        <div class="badge">
+          <div class="badge-dot"></div>
+          <span>CYBER EYE Network Security Dashboard</span>
+        </div>
+
+        <h1 class="hero-title">
+          Sign in to the
+          <span class="hero-highlight">CYBER EYE Platform</span>
+        </h1>
+
+        <p class="hero-desc">
+          Monitor live network traffic, detect anomalies and attacks before they
+          escalate, and track device and service performance from a single
+          dashboard.
+        </p>
+
+        <div class="hero-metrics">
+          <div class="metric">
+            <div class="metric-label">Network Scope</div>
+            <div class="metric-value">Active environment</div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Data feed</div>
+            <div class="metric-value">Live data flow</div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Alert Center</div>
+            <div class="metric-value">Security highlights</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Login card -->
+      <section class="login-card">
+        <header class="login-header">
+          <div class="brand">
+            <div class="brand-logo-img">
+              <!-- ✅ نفس الشعار من assets -->
+              <img src="/assets/logos.svg" alt="CYBER EYE Logo" />
+            </div>
+            <div class="brand-text">
+              <span class="brand-name">
+                <span class="cyber">CYBER</span> <span class="eye">EYE</span>
+              </span>
+              <span class="brand-sub">
+                Network Threat Monitoring &amp; Analytics
+              </span>
+            </div>
+          </div>
+          <span class="env-pill">Production</span>
+        </header>
+
+        <div>
+          <h2 class="login-title">Sign in to the dashboard</h2>
+          <p class="login-subtitle">
+            Use the access credentials provided by your security or network
+            administrator.
+          </p>
+        </div>
+
+        <form id="loginForm">
+          <!-- Username / email -->
+          <div class="field">
+            <label class="field-label">
+              <span class="main">Username or email</span>
+              <span class="optional">Example: analyst@cybereye.local</span>
+            </label>
+            <div class="input-wrapper">
+              <span class="input-icon">👤</span>
+              <input
+                type="text"
+                id="username"
+                class="input"
+                placeholder="Enter your username or email"
+                autocomplete="username"
+                required
+              />
+            </div>
+            <div id="usernameError" class="error-text" style="display: none">
+              Please enter your username or email.
+            </div>
+          </div>
+
+          <!-- Password -->
+          <div class="field">
+            <label class="field-label">
+              <span class="main">Password</span>
+            </label>
+            <div class="input-wrapper">
+              <span class="input-icon">🔒</span>
+              <input
+                type="password"
+                id="password"
+                class="input"
+                placeholder="••••••••••"
+                autocomplete="current-password"
+                required
+                minlength="6"
+              />
+            </div>
+            <div id="passwordError" class="error-text" style="display: none">
+              Password must be at least 6 characters.
+            </div>
+          </div>
+
+          <button type="submit" class="btn-primary">
+            <span>Sign in to CYBER EYE</span>
+            <span class="btn-icon">👁️‍🗨️</span>
+          </button>
+
+          <div id="serviceNotice" class="service-notice" role="status" hidden>
+            The sign-in service is not connected in this public preview.
+            Use <strong>Explore the live demo</strong> below to open the dashboard.
+          </div>
+
+          <button type="button" id="demoButton" class="btn-secondary">
+            <span>Explore the live demo</span>
+            <span class="btn-icon" aria-hidden="true">→</span>
+          </button>
+
+          <div class="divider">
+            <div class="divider-line"></div>
+            <div class="divider-text">Security notice</div>
+            <div class="divider-line"></div>
+          </div>
+
+          <div class="small-note">
+            <span>
+              Do not share your credentials with anyone. For assistance, contact
+              <strong>Information Security team</strong>.
+            </span>
+            <span>
+              All sign-in attempts are <strong>logged and monitored</strong> for
+              security and auditing.
+            </span>
+          </div>
+        </form>
+      </section>
+    </div>
+
+    <!-- ✅ سكربت اللوقن من مجلد login -->
+    <script src="/login/index.js" defer></script>
+  </body>
+</html>

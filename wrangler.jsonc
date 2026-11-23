@@ -1,0 +1,11 @@
+{
+  // Cloudflare deployment of the public demo (static showcase of the portal).
+  // Only the ./demo folder is published; the Docker stack is not deployed.
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "cyber-eye",
+  "compatibility_date": "2025-09-01",
+  "assets": {
+    "directory": "./demo",
+    "not_found_handling": "404-page"
+  }
+}

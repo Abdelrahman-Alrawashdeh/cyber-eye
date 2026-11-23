@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cyber Eye — Platform Tour</title>
+  <meta name="description" content="A guided tour of the CYBER EYE monitoring stack: Grafana security dashboards, Kibana log analytics, Alertmanager alerting and the lab network topology." />
+  <meta name="theme-color" content="#020617" />
+  <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+  <link rel="stylesheet" href="/showcase/showcase.css" />
+</head>
+<body>
+  <header class="top">
+    <div class="wrap top-inner">
+      <a class="brand" href="/dashboard/">
+        <img src="/assets/logo.svg" alt="" width="34" height="34" />
+        <span><b>CYBER</b> EYE</span>
+      </a>
+      <nav aria-label="Sections">
+        <a href="#grafana">Grafana</a>
+        <a href="#kibana">Kibana</a>
+        <a href="#alerts">Alerting</a>
+        <a href="#architecture">Architecture</a>
+      </nav>
+      <a class="btn" href="/dashboard/">Back to dashboard</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero wrap">
+      <p class="eyebrow"><span class="dot"></span> Platform tour</p>
+      <h1>Inside the <span class="hl">CYBER EYE</span> monitoring stack</h1>
+      <p class="lead">
+        In production, these tools run on the protected internal network and are not exposed to the internet.
+        This tour shows them exactly as they appear in the running environment.
+      </p>
+      <ul class="chips" aria-label="Stack">
+        <li>Grafana</li><li>Elasticsearch</li><li>Logstash</li><li>Kibana</li><li>Alertmanager</li><li>MySQL</li><li>Docker</li>
+      </ul>
+    </section>
+
+    <section id="grafana" class="block wrap">
+      <div class="head">
+        <p class="eyebrow">01 · Security operations</p>
+        <h2>Grafana dashboards</h2>
+        <p>Real-time attack status, geographic attack sources, most-targeted hosts and services, port and protocol distribution, and alert timelines by severity.</p>
+      </div>
+      <figure class="shot wide"><a href="/showcase/img/grafana-attack-status.webp" target="_blank" rel="noopener"><img src="/showcase/img/grafana-attack-status.webp" width="1600" height="652" loading="lazy" alt="Grafana attack status panel showing an active attack, the detection signature, top attacker country and source IP" /></a><figcaption>Live attack status — detection signature, attacker country and source IP</figcaption></figure>
+      <figure class="shot wide"><a href="/showcase/img/grafana-attack-map.webp" target="_blank" rel="noopener"><img src="/showcase/img/grafana-attack-map.webp" width="1600" height="522" loading="lazy" alt="World map of attacking countries" /></a><figcaption>Top attacking countries on a world map</figcaption></figure>
+      <div class="grid2">
+        <figure class="shot"><a href="/showcase/img/grafana-targets.webp" target="_blank" rel="noopener"><img src="/showcase/img/grafana-targets.webp" width="1600" height="772" loading="lazy" alt="Bar charts of most-targeted internal IPs and top attacker countries with an event table" /></a><figcaption>Most-targeted internal IPs and attacker countries</figcaption></figure>
+        <figure class="shot"><a href="/showcase/img/grafana-services.webp" target="_blank" rel="noopener"><img src="/showcase/img/grafana-services.webp" width="1600" height="784" loading="lazy" alt="Targeted services by port and alert signature breakdown" /></a><figcaption>Targeted services and alert signatures</figcaption></figure>
+        <figure class="shot"><a href="/showcase/img/grafana-ports-protocols.webp" target="_blank" rel="noopener"><img src="/showcase/img/grafana-ports-protocols.webp" width="1600" height="792" loading="lazy" alt="Destination ports and protocol distribution donut charts" /></a><figcaption>Destination ports and protocol distribution</figcaption></figure>
+        <figure class="shot"><a href="/showcase/img/grafana-alert-timelines.webp" target="_blank" rel="noopener"><img src="/showcase/img/grafana-alert-timelines.webp" width="1600" height="787" loading="lazy" alt="Critical and medium alert timelines with Suricata event details" /></a><figcaption>Alert timelines and Suricata event details</figcaption></figure>
+      </div>
+    </section>
+
+    <section id="kibana" class="block wrap">
+      <div class="head">
+        <p class="eyebrow">02 · Log analytics</p>
+        <h2>Kibana</h2>
+        <p>Every event is shipped through Logstash into Elasticsearch, where analysts can search, filter and investigate raw records.</p>
+      </div>
+      <figure class="shot wide"><a href="/showcase/img/kibana-discover.webp" target="_blank" rel="noopener"><img src="/showcase/img/kibana-discover.webp" width="1600" height="788" loading="lazy" alt="Kibana Discover view with event histogram and documents" /></a><figcaption>Kibana Discover — event histogram and raw documents</figcaption></figure>
+    </section>
+
+    <section id="alerts" class="block wrap">
+      <div class="head">
+        <p class="eyebrow">03 · Alerting</p>
+        <h2>Alertmanager &amp; email notifications</h2>
+        <p>Grafana alert rules route through Alertmanager, which delivers branded email notifications with severity, timing and an executive summary.</p>
+      </div>
+      <div class="grid-alert">
+        <figure class="shot"><a href="/showcase/img/alertmanager.webp" target="_blank" rel="noopener"><img src="/showcase/img/alertmanager.webp" width="1600" height="663" loading="lazy" alt="Alertmanager alerts view" /></a><figcaption>Alertmanager alerts view</figcaption></figure>
+        <figure class="shot tall"><a href="/showcase/img/alert-email.webp" target="_blank" rel="noopener"><img src="/showcase/img/alert-email.webp" width="1006" height="1247" loading="lazy" alt="CYBER EYE alert email with alert overview, severity and executive summary" /></a><figcaption>Branded alert email</figcaption></figure>
+      </div>
+    </section>
+
+    <section id="architecture" class="block wrap">
+      <div class="head">
+        <p class="eyebrow">04 · Architecture</p>
+        <h2>Lab network topology</h2>
+        <p>The virtual lab network monitored by CYBER EYE: segmented hosts, switching and routing layers, and the monitored perimeter. Platform data is stored in MySQL.</p>
+      </div>
+      <figure class="shot wide light"><a href="/showcase/img/network-topology.webp" target="_blank" rel="noopener"><img src="/showcase/img/network-topology.webp" width="1112" height="806" loading="lazy" alt="Network topology diagram of the CYBER EYE lab environment" /></a><figcaption>Network topology of the monitored environment</figcaption></figure>
+    </section>
+  </main>
+
+  <footer class="foot wrap">
+    <span><b>CYBER</b> EYE · Network monitoring &amp; cyber threat analytics</span>
+    <a href="/dashboard/#/team">Project team</a>
+  </footer>
+</body>
+</html>

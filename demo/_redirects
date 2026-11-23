@@ -1,0 +1,6 @@
+# Entry points -> sign-in page
+/              /login/       302
+/index.html    /login/       302
+/login         /login/       301
+/dashboard     /dashboard/   301
+/showcase      /showcase/    301

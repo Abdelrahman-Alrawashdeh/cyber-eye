@@ -20,6 +20,8 @@ enriched and stored in the Elastic Stack, visualised in Grafana and Kibana, and 
 ![React](https://img.shields.io/badge/Dashboard-React-61DAFB?logo=react&logoColor=black)
 ![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?logo=mysql&logoColor=white)
 
+[![Watch the demo on YouTube](https://img.shields.io/badge/Watch_the_demo-YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtu.be/6JnpEV_RBdA)
+
 <sub>Graduation project · CYS 499 · Department of Information Technology, Yarmouk University · Fall 2025/2026</sub>
 
 </div>
@@ -29,6 +31,7 @@ enriched and stored in the Elastic Stack, visualised in Grafana and Kibana, and 
 ## Contents
 
 - [Overview](#overview)
+- [Demo video](#demo-video)
 - [Downloads](#downloads)
 - [Screenshots](#screenshots)
 - [Architecture](#architecture)
@@ -55,6 +58,14 @@ Cyber Eye bridges the gap between theory and hands-on security practice. It simu
 
 This repository contains the monitoring and portal stack (Docker Compose) and the full network configuration reference. The complete lab — network, IPS, honeypot and attack generator — is available as a ready-to-run virtual machine (see [Downloads](#downloads)).
 
+## Demo video
+
+<p align="center">
+  <a href="https://youtu.be/6JnpEV_RBdA"><img src="https://img.youtube.com/vi/6JnpEV_RBdA/hqdefault.jpg" alt="Cyber Eye demo video on YouTube" width="640"></a>
+  <br>
+  <sub>Click to watch the full walkthrough on YouTube</sub>
+</p>
+
 ## Downloads
 
 | Resource | Size | Link |
@@ -62,7 +73,7 @@ This repository contains the monitoring and portal stack (Docker Compose) and th
 | **Complete lab virtual machine** (OVA in a RAR archive) | 30.6 GB | [Download from MEGA](https://mega.nz/file/xmcUURpC#yNQdEx5EGvZFruNiqrdvPxRyJvLDVcFidfqLam0Ryns) |
 | **Project documentation** (PDF, 90 pages) | 3 MB | [Latest release](../../releases/latest) |
 | **Presentation** (PowerPoint) | 72 MB | [Latest release](../../releases/latest) |
-| **Demo video** (MP4) | 92 MB | [Latest release](../../releases/latest) |
+| **Demo video** | 92 MB | [YouTube](https://youtu.be/6JnpEV_RBdA) · [MP4 in latest release](../../releases/latest) |
 
 ### What's inside the lab VM
 
@@ -247,7 +258,8 @@ cyber-eye/
 
 - **Network device configurations** — every router, switch and firewall command with explanations: [`docs/network/device-configurations.md`](docs/network/device-configurations.md)
 - **Full project report** (90 pages: network design, Suricata, T-Pot, attack generator, ELK pipeline, Grafana and alerting) — PDF in the [latest release](../../releases/latest)
-- **Presentation and demo video** — attached to the [latest release](../../releases/latest)
+- **Demo video** — [watch on YouTube](https://youtu.be/6JnpEV_RBdA)
+- **Presentation** — attached to the [latest release](../../releases/latest)
 - **Lab virtual machine** — see [Downloads](#downloads)
 
 ## Security notes
