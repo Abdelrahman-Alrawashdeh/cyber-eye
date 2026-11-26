@@ -16,7 +16,7 @@ enriched and stored in the Elastic Stack, visualised in Grafana and Kibana, and 
 ![Grafana](https://img.shields.io/badge/Grafana-11.2-F46800?logo=grafana&logoColor=white)
 ![Alertmanager](docs/badges/alertmanager.svg)
 ![Suricata](https://img.shields.io/badge/IDS%2FIPS-Suricata-EF3B2D)
-![Flask](https://img.shields.io/badge/API-Flask-000000?logo=flask&logoColor=white)
+![Flask](https://img.shields.io/badge/API-Flask_3-3BABC3?logo=flask&logoColor=white)
 ![React](https://img.shields.io/badge/Dashboard-React-61DAFB?logo=react&logoColor=black)
 ![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?logo=mysql&logoColor=white)
 
