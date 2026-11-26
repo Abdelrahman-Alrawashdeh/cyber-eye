@@ -14,7 +14,7 @@ enriched and stored in the Elastic Stack, visualised in Grafana and Kibana, and 
 ![Kibana](https://img.shields.io/badge/Kibana-8.15-E8478B?logo=kibana&logoColor=white)
 ![Logstash](https://img.shields.io/badge/Logstash-GeoIP-00BFB3?logo=logstash&logoColor=white)
 ![Grafana](https://img.shields.io/badge/Grafana-11.2-F46800?logo=grafana&logoColor=white)
-![Alertmanager](https://img.shields.io/badge/Alertmanager-0.27-E6522C?style=flat)
+![Alertmanager](docs/badges/alertmanager.svg)
 ![Suricata](https://img.shields.io/badge/IDS%2FIPS-Suricata-EF3B2D)
 ![Flask](https://img.shields.io/badge/API-Flask-000000?logo=flask&logoColor=white)
 ![React](https://img.shields.io/badge/Dashboard-React-61DAFB?logo=react&logoColor=black)
